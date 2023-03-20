@@ -1,7 +1,7 @@
 package com.code.blog.controller;
 
+
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,6 +44,7 @@ public class UserController {
 		return ResponseEntity.ok(updatedUser);
 	}
 
+	// delete - by  id
 	@DeleteMapping("/{userId}")
 	public ResponseEntity<ApiResponse> deleteUser(@PathVariable ("userId") Integer userId)
 	{
@@ -52,12 +53,13 @@ public class UserController {
 		return new ResponseEntity<ApiResponse>(new ApiResponse("User Deleted Successfully", true),HttpStatus.OK);
 	}
 	
+	// getAll -users
 	@GetMapping("/")
 	public ResponseEntity<List<UserDto>> getAllUser(){
 		return ResponseEntity.ok(this.userService.getAllUsers()); 
 	}
 	
-	
+	//get user by id
 	@GetMapping("/{userId}")
 	public ResponseEntity<UserDto> getSingleUser(@PathVariable Integer userId){
 		return ResponseEntity.ok(this.userService.getUserById(userId)); 
